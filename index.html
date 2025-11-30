@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRESTANI NICOLA CV - Digital Profile</title>
+
+    <style>
+        /* -------------------------------------------------------------
+           BASE RESET
+        ------------------------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* -------------------------------------------------------------
+           CSS VARIABLES - PURPLE THEME
+        ------------------------------------------------------------- */
+        :root { 
+            --primary-color: #0a0a0a;      /* Deep black */
+            --secondary-color: #1a0a1a;    /* Purple black */
+            --accent-color: #a855f7;       /* Neon purple */
+            --accent-hover: #9333ea;       /* Darker purple */
+            --text-color: #e0d0f0;         /* Light purple text */
+            --text-secondary: #a080b0;     /* Secondary purple text */
+            --dark-bg: #0d0a0f;            /* Dark purple background */
+            --card-bg: #1a0f1f;            /* Dark purple card */
+        }
+
+        /* -------------------------------------------------------------
+           BASE STYLES
+        ------------------------------------------------------------- */
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.08) 0%, transparent 50%);
+        }
+
+        /* -------------------------------------------------------------
+           HEADER & NAVBAR - GLASS EFFECT
+        ------------------------------------------------------------- */
+        header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a855f7, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* -------------------------------------------------------------
+           HERO SECTION
+        ------------------------------------------------------------- */
+        .hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+            color: var(--text-color);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+            object-fit: cover;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.6);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-info div {
+            background: rgba(168, 85, 247, 0.15);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info div:hover {
+            background: rgba(168, 85, 247, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        /* -------------------------------------------------------------
+           SECTIONS - GLASS CARDS
+        ------------------------------------------------------------- */
+        section {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2.5rem;
+            background: rgba(26, 15, 31, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            box-shadow: 0 8px 32px rgba(168, 85, 247, 0.1);
+            scroll-margin-top: 80px;
+        }
+
+        section h2 {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+            border-bottom: 3px solid var(--accent-color);
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: var(--accent-hover);
+            filter: blur(5px);
+        }
+
+        /* -------------------------------------------------------------
+           ABOUT SECTION
+        ------------------------------------------------------------- */
+        .about-content p {
+            text-align: justify;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* -------------------------------------------------------------
+           TIMELINE
+        ------------------------------------------------------------- */
+        .timeline-item {
+            margin-bottom: 2.5rem;
+            padding-left: 2.5rem;
+            border-left: 3px solid var(--accent-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+        }
+
+        .timeline-item h3 {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-item .date {
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-item ul {
+            margin-left: 1.5rem;
+            margin-top: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .timeline-item li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        /* -------------------------------------------------------------
+           PROJECTS GRID
+        ------------------------------------------------------------- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(26, 15, 31, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .project-image {
+            height: 250px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(147, 51, 234, 0.2));
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(168, 85, 247, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .project-content p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-links a:hover {
+            color: var(--accent-hover);
+            transform: translateX(5px);
+        }
+
+        /* -------------------------------------------------------------
+           SKILLS
+        ------------------------------------------------------------- */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: rgba(168, 85, 247, 0.2);
+            color: var(--accent-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(168, 85, 247, 0.35);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 85, 247, 0.3);
+        }
+
+        /* -------------------------------------------------------------
+           CONTACT CARDS
+        ------------------------------------------------------------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(26, 15, 31, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .contact-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(147, 51, 234, 0.2));
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .contact-content {
+            padding: 1.5rem;
+        }
+
+        .contact-content h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-content a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .contact-content a:hover {
+            color: var(--accent-hover);
+            transform: translateX(5px);
+        }
+
+        /* -------------------------------------------------------------
+           FOOTER
+        ------------------------------------------------------------- */
+        footer {
+            background: rgba(10, 10, 10, 0.9);
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            color: var(--text-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+        }
+
+        /* -------------------------------------------------------------
+           RESPONSIVE
+        ------------------------------------------------------------- */
+        @media (max-width: 968px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .skills-container,
+            .contact-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- -------------------------------------------------------------
+         FIXED NAVBAR
+    ------------------------------------------------------------- -->
+    <header>
+        <nav>
+            <h1>CRESTANI NICOLA</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- -------------------------------------------------------------
+         HERO SECTION
+    ------------------------------------------------------------- -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="f1.jpg" class="profile-photo" alt="Nicola Crestani">
+            <h2>CRESTANI NICOLA</h2>
+            <p>Computer Science Student | Full Stack Developer | Problem Solver</p>
+            
+            <div class="contact-info">
+                <div>📧 crestaninicola7@gmail.com</div>
+                <div>📱 +39 334 997 7320</div>
+                <div>📍 Marostica, Vicenza, Italy</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         ABOUT ME
+    ------------------------------------------------------------- -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>
+                Welcome to my professional profile! I'm a Computer Science student passionate about technology 
+                and innovation. My journey in programming began from curiosity about understanding how things work 
+                behind the scenes of the web and applications we use every day.
+            </p>
+            <p>
+                What motivates me most is solving complex problems through code and creating solutions 
+                that can make a difference. I enjoy tackling technical challenges and finding elegant and scalable solutions. 
+                During my studies, I've developed a particular interest in full-stack web development and 
+                software architecture.
+            </p>
+            <p>
+                My professional goal is to join a dynamic team where I can apply my 
+                technical knowledge, continue learning from more experienced people, and contribute to projects that have 
+                a positive impact. I'm always looking for new technologies to explore and best practices to implement.
+            </p>
+            <p>
+                Beyond programming, I strongly believe in the importance of continuous learning and adaptability 
+                in the rapidly evolving tech industry. The ability to work in teams, communicate effectively, 
+                and manage time are skills I consider as fundamental as technical ones.
+            </p>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         EXPERIENCE & EDUCATION
+    ------------------------------------------------------------- -->
+    <section id="experience">
+        <h2>Experience & Education</h2>
+
+        <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Education</h3>
+        
+        <div class="timeline-item">
+            <h3>Bachelor's Degree in Computer Science</h3>
+            <p class="date">[University Name] | September 2021 - June 2025 (expected)</p>
+            <p style="color: var(--text-color); margin-bottom: 0.5rem;">GPA: [Grade if relevant]</p>
+            <ul>
+                <li>Relevant Courses: Algorithms and Data Structures, Web Programming, Databases, Software Engineering</li>
+                <li>Academic Projects: Development of full-stack web applications, implementation of complex algorithms</li>
+                <li>Skills Acquired: Problem solving, teamwork, project management</li>
+            </ul>
+        </div>
+
+        <h3 style="color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem;">Professional Experience</h3>
+        
+        <div class="timeline-item">
+            <h3>Web Developer | [Company/Project Name]</h3>
+            <p class="date">June 2023 - September 2023</p>
+            <ul>
+                <li>Developed responsive web applications using HTML, CSS, JavaScript and modern frameworks</li>
+                <li>Collaborated with a team of 4 people implementing Agile/Scrum methodologies</li>
+                <li>Implemented features that improved user experience by 30%</li>
+                <li>Managed code versioning through Git and GitLab</li>
+            </ul>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Personal Project: Professional Portfolio</h3>
+            <p class="date">November 2024 - Present</p>
+            <ul>
+                <li>Designed and developed a professional web portfolio from scratch using HTML, CSS and JavaScript</li>
+                <li>Implemented modern responsive design with glassmorphism effects and animations</li>
+                <li>Managed deployment through GitLab Pages for free hosting</li>
+                <li>Demonstrated skills in UI/UX design and web development best practices</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         PROJECTS SECTION
+    ------------------------------------------------------------- -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image">
+                    ⌨️
+                </div>
+                <div class="project-content">
+                    <h3>Keylogger Project</h3>
+                    <p>
+                        Advanced keylogger implementation for educational purposes. Demonstrates understanding 
+                        of system-level programming, event handling, and security concepts. 
+                        Built with focus on learning cybersecurity fundamentals.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">System Programming</span>
+                        <span class="tech-tag">Security</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="keylogger.py" target="_blank">📄 View Code →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image">
+                    🔐
+                </div>
+                <div class="project-content">
+                    <h3>Encryption Tool</h3>
+                    <p>
+                        Cryptography tool implementing various encryption algorithms. Features secure 
+                        data encryption/decryption with multiple cipher methods. Demonstrates knowledge 
+                        of cryptographic principles and secure coding practices.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Algorithms</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="criptazione.py" target="_blank">📄 View Code →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         SKILLS
+    ------------------------------------------------------------- -->
+    <section id="skills">
+        <h2>Skills</h2>
+
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>💻 Programming Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🛠️ Technologies & Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Git/GitLab</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Bootstrap</span>
+                    <span class="skill-tag">Responsive Design</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🎯 Technical Skills</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Web Development</span>
+                    <span class="skill-tag">Database Design</span>
+                    <span class="skill-tag">API Development</span>
+                    <span class="skill-tag">Version Control</span>
+                    <span class="skill-tag">Testing & Debugging</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>🤝 Soft Skills</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Team Work</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Time Management</span>
+                    <span class="skill-tag">Critical Thinking</span>
+                    <span class="skill-tag">Adaptability</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         CONTACT
+    ------------------------------------------------------------- -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-image">📧</div>
+                <div class="contact-content">
+                    <h3>Email</h3>
+                    <p>Write me for job opportunities, collaborations or questions.</p>
+                    <a href="mailto:crestaninicola7@gmail.com">crestaninicola7@gmail.com →</a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-image">📱</div>
+                <div class="contact-content">
+                    <h3>Phone</h3>
+                    <p>Prefer to talk directly? Call me or send a message.</p>
+                    <a href="tel:+393349977320">+39 334 997 7320 →</a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-image">💼</div>
+                <div class="contact-content">
+                    <h3>Social & Professional</h3>
+                    <p>Connect with me on my professional profiles.</p>
+                    <a href="https://github.com/nicolani006-ux" target="_blank">GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+         FOOTER
+    ------------------------------------------------------------- -->
+    <footer>
+        <p>&copy; 2025 CRESTANI NICOLA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- -------------------------------------------------------------
+         JAVASCRIPT
+    ------------------------------------------------------------- -->
+    <script>
+        // Smooth scrolling with navbar offset
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                
+                if (target) {
+                    const offsetPosition = target.offsetTop - 80;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Active link highlighting
+        window.addEventListener('scroll', () => {
+            let current = "";
+            const sections = document.querySelectorAll("section");
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            document.querySelectorAll("nav a").forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
